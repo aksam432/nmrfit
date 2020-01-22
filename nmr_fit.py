@@ -1,7 +1,10 @@
-# This program is for fitting rate equations provided by jonas
-
-
-
+######################################################################################
+#
+#  Tool for curve fitting on nmr data 
+#
+#(c) Akshay 2020
+#
+######################################################################################
 import numpy as np
 import pandas as pd
 import xlrd as xl
@@ -10,10 +13,6 @@ from pandas import ExcelWriter
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-#df= pd.read_excel("Titration data.xlsx")
-#print (df.iloc[0,2])
-#for x in df.columns():
-#    print(x)
 
 class Solver(object):
     def __init__(self,filename):
@@ -44,8 +43,6 @@ class Solver(object):
 
     def fit(self):
         popt,pcov = curve_fit(self.func,self.xdata,self.ydata)
-        print(popt)
+        print('K=%3.6f Delta=%3.6f x=%3.6f'%tuple(popt))
         self.plot(popt)
     
-
-Solver("Titration data.xlsx")
