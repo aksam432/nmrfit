@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import argparse
+from nmr.nmr_fit import Solver
+
+
+parser = argparse.ArgumentParser(description="Curve fitting for nmr data in excel file")
+parser.add_argument('-i','--inputfile',dest='fpts',help = "Excel file in particular order")
+args= parser.parse_args()
+Solver(args.fpts)
+
